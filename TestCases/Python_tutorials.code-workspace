@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "Python_tutorials",
+			"path": "../../.."
+		},
+		{
+			"name": "Automation",
+			"path": "../.."
+		}
+	],
+	"settings": {}
+}

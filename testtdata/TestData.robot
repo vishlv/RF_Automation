@@ -1,6 +1,5 @@
 *** Variables ***
-${url}=    https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
-
+${url}=    https://opensource-demo.orangehrmlive.com/
 
 ###########Creds
 

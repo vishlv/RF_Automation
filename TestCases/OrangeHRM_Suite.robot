@@ -9,16 +9,21 @@ Verify Login Page title
     Should Be Equal As Strings     ${Homepage_title}    ${actual_title}
 
 Verify_Succesfull_Login
-    Wait Until Page Contains    Dashboard
+    Wait Until Page Contains    Dashboard      
     Capture Element Screenshot     ${Dashboard_text_element}
     
 Verify Admin text on Admin page
-    Wait Until Page Contains    Dashboard
+    Wait Until Page Contains    Dashboard       timeout=10
     Click Button Element    ${Admin_locator}
     Page_Admin.Verify Admin Page details
 
 Verify Admin user is present in Search Result table
     Click Button Element    ${Admin_locator}
     Page_Admin.Verify Admin Page details
-    Page_Admin.Verify admin user presense by search method  
+    Page_Admin.Verify admin user presense by search method
+
+Find User using username and role type
+    [Tags]      New
+    Click Button Element    ${Admin_locator}
+    Page_Admin.Find User in Admin Page using username and role      Admin    Admin
     

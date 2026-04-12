@@ -1,5 +1,5 @@
 *** Settings ***
-Resource    ../Resources/Utility/Settings.robot
+Resource    ../Resources/Utility/Settings.resource
 
 *** Keywords ***
 Get Login Page Title
@@ -11,7 +11,4 @@ Give Username
 
 Enter password
     Enter Text in text field    ${password_field}    ${pwd}
-
-
-     
 

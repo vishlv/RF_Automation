@@ -1,10 +1,11 @@
 *** Settings ***
-Resource    ../Resources/Utility/Settings.robot
-Test Setup     Common_keyword.Login to OrangeHRM
-Test Teardown     Common_keyword.Logout from OrangeHRM
+Resource    ../Resources/Utility/Settings.resource
+Test Setup     Common_keyword.Login to Application
+Test Teardown     Common_keyword.Logout from Application
 
 *** Test Cases ***
 Verify Login Page title
+    [tags]   debug
     ${actual_title}=    Get Login Page Title
     Should Be Equal As Strings     ${Homepage_title}    ${actual_title}
 
@@ -15,15 +16,14 @@ Verify_Succesfull_Login
 Verify Admin text on Admin page
     Wait Until Page Contains    Dashboard       timeout=10
     Click Button Element    ${Admin_locator}
-    Page_Admin.Verify Admin Page details
+    AdminPage.Verify Admin Page details
 
 Verify Admin user is present in Search Result table
     Click Button Element    ${Admin_locator}
-    Page_Admin.Verify Admin Page details
-    Page_Admin.Verify admin user presense by search method
+    AdminPage.Verify Admin Page details
+    AdminPage.Verify admin user presense by search method
 
 Find User using username and role type
     [Tags]      New
     Click Button Element    ${Admin_locator}
-    Page_Admin.Find User in Admin Page using username and role      Admin    Admin
-    
+    AdminPage.Find User in Admin Page using username and role      Admin    Admin

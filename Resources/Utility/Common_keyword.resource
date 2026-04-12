@@ -1,13 +1,12 @@
 *** Settings ***
-Resource    ../../Resources/Utility/Settings.robot
-
+Resource    ../Resources/Utility/Settings.resource
 
 *** Keywords ***
-Login to OrangeHRM
+Login to Application
     Open Browser    ${url}    Chrome    options=binary_location=r"D:\\WebDrivers\\chrome-win64\\chrome.exe"
-    Maximize Browser Window
-    Page_Loginpage.Give Username
-    Page_Loginpage.Enter password
+    SeleniumLibrary.Maximize Browser Window
+    Give Username
+    Enter Password
     Click Button Element    ${login_btn}
 
 Enter Text in text field
@@ -20,7 +19,7 @@ Click Button Element
     Wait Until Element Is Enabled    ${loc}    10
     Click Element     ${loc}
 
-Logout from OrangeHRM
+Logout from Application
     Click Button Element    ${user_drpdwn_menu}
     Click Button Element    ${login_btn}
     Close Browser

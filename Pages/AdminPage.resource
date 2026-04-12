@@ -1,17 +1,9 @@
 *** Settings ***
-Resource    ../Resources/Utility/Settings.robot
-Resource    ../Resource/Utility/Common_keyword.robot
+Resource   ../Resources/Utility/Settings.resource
 
 *** Variables ***
 @{table_headers}=    Username     User Role    Employee Name    Status
 
-
-# *** Test Cases ***
-
-# test1
-#     FOR  ${x}  IN  @{table_headers}
-#         Log    ${x}
-#     END
 
 *** Keywords ***
 Verify Admin Page details
@@ -24,7 +16,7 @@ Verify admin user presense by search method
     Click Button Element   ${enable_value_drpdwn}
     Click Button Element    ${search_btn}
     FOR  ${x}  IN   @{table_headers}
-        Wait Until Element Is Visible     //div[@class='oxd-table-body']/div/div/div[count(//div[@class="oxd-table-header"]/div/div[text()='${x}']/preceding-sibling::div)+1]
+        SeleniumLibrary.Wait Until Element Is Visible     //div[@class='oxd-table-body']/div/div/div[count(//div[@class="oxd-table-header"]/div/div[text()='${x}']/preceding-sibling::div)+1]
         ${extracted_val}=    Get Text     //div[@class='oxd-table-body']/div/div/div[count(//div[@class="oxd-table-header"]/div/div[text()='${x}']/preceding-sibling::div)+1]
         Log     ${extracted_val}
     END  
@@ -32,11 +24,11 @@ Verify admin user presense by search method
 Find User in Admin Page using username and role
     [Arguments]     ${username}     ${role}
     Enter Text in text field     ${System_user_username_field}   ${username}
-    Common_keyword.Click Button Element     ${Role_type_dropdown}
-    Common_keyword.Click Button Element     ${Select_ROLE_option}/span[text()='${role}']
+    Click Button Element     ${Role_type_dropdown}
+    Click Button Element     ${Select_ROLE_option}/span[text()='${role}']
     Click Button Element    ${search_btn}
     FOR  ${x}  IN   @{table_headers}
-        Wait Until Element Is Visible     //div[@class='oxd-table-body']/div/div/div[count(//div[@class="oxd-table-header"]/div/div[text()='${x}']/preceding-sibling::div)+1]
-        ${extracted_val}=    Get Text     //div[@class='oxd-table-body']/div/div/div[count(//div[@class="oxd-table-header"]/div/div[text()='${x}']/preceding-sibling::div)+1]
+        SeleniumLibrary.Wait Until Element Is Visible     //div[@class='oxd-table-body']/div/div/div[count(//div[@class="oxd-table-header"]/div/div[text()='${x}']/preceding-sibling::div)+1]
+        ${extracted_val}=    SeleniumLibrary.Get Text     //div[@class='oxd-table-body']/div/div/div[count(//div[@class="oxd-table-header"]/div/div[text()='${x}']/preceding-sibling::div)+1]
         Log     ${extracted_val}
     END 
